@@ -37,16 +37,26 @@ function Filter() {
                             aria-label="Search"
                             onChange={searchItem}
                         />
-                        {/* <Button variant="outline-success">Search</Button> */}
                     </Form>
                 </Container>
             </Navbar>
             <div style={{ display: 'flex', marginTop: 90, width: '100%' }}>
                 {!filteredMovies.length ? (
-                    <Card style={{width:'20rem', textAlign:'center', backgroundColor:'#FF6FC0', padding:15,margin:'auto'}}><h2 >Movie not found 🥲</h2><Button style={{ margin:'auto'}}>Add movie</Button></Card>
+                    <Card
+                        style={{
+                            width: '20rem',
+                            textAlign: 'center',
+                            backgroundColor: '#FF6FC0',
+                            padding: 15,
+                            margin: 'auto',
+                        }}
+                    >
+                        <h2>Movie not found 🥲</h2>
+                        <Button style={{ margin: 'auto' }}>Add movie</Button>
+                    </Card>
                 ) : (
                     filteredMovies.map((movieCard, index) => (
-                         <MovieCard key={index} {...movieCard} />
+                        <MovieCard key={index} {...movieCard} />
                     ))
                 )}
             </div>
