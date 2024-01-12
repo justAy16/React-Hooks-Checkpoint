@@ -9,7 +9,7 @@ function TrailerPage() {
     const trailer = movie.find((i) => i.title === title)
 
     return (
-        <Card className="text-center">
+        <Card style={{backgroundColor:'#0F3230', color:'wheat', width:'80%', margin:'auto'}} className="text-center">
             <Card.Header>Trailer</Card.Header>
             <Card.Body>
                 <Card.Title>{trailer.title}</Card.Title>

@@ -1,23 +1,25 @@
 import { movie } from '../Data/Movie'
 import MovieCard from './MovieCard'
-import { useState } from 'react'
-import React from 'react'
+import React, { useState} from 'react';
 import { Navbar, Container, Form, Button, Card } from 'react-bootstrap'
 
 function Filter() {
+
     const [filteredMovies, setFilteredMovies] = useState(movie)
+
 
     const searchItem = (e) => {
         const search = e.target.value.toLowerCase()
-
         const filtered = movie.filter(
             (i) =>
-                i.title.toLowerCase().includes(search) ||
-                i.rating.toString().includes(search)
+                i.original_title.toLowerCase().includes(search) ||
+                i.vote_average.toString().includes(search)
         )
 
         setFilteredMovies(filtered)
     }
+
+    
     return (
         <div>
             <Navbar
