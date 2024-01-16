@@ -1,16 +1,30 @@
-import { movie } from '../Data/Movie'
+// import { movie } from '../Data/Movie'
 import MovieCard from './MovieCard'
-import React, { useState} from 'react';
-import { Navbar, Container, Form, Button, Card } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react';
+import { Navbar, Container, Form, Button, Card} from 'react-bootstrap';
+import { searchItem } from '../Functions/SearchItem';
 
 function Filter() {
+    const API = 'https://api.themoviedb.org/3/movie/popular?api_key=be5b5b951aea3a7b6afe09c7d7c947b0';
+    const [movies, setMovies] = useState([]);
+    const [filteredMovies, setFilteredMovies] = useState(movies)
 
-    const [filteredMovies, setFilteredMovies] = useState(movie)
-
-
+    useEffect(() => {
+        fetch(API)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.results)
+                setMovies(data.results)
+                setFilteredMovies(data.results);
+            })
+            .catch(error => {
+                console.error('Error fetching movie data:', error);
+            });
+    }, [API])
     const searchItem = (e) => {
         const search = e.target.value.toLowerCase()
-        const filtered = movie.filter(
+
+        const filtered = movies.filter(
             (i) =>
                 i.original_title.toLowerCase().includes(search) ||
                 i.vote_average.toString().includes(search)
@@ -42,27 +56,32 @@ function Filter() {
                     </Form>
                 </Container>
             </Navbar>
-            <div style={{ display: 'flex', marginTop: 90, width: '100%' }}>
+      
                 {!filteredMovies.length ? (
-                    <Card
-                        style={{
-                            width: '20rem',
-                            textAlign: 'center',
-                            backgroundColor: '#FF6FC0',
-                            padding: 15,
-                            margin: 'auto',
-                        }}
-                    >
-                        <h2>Movie not found 🥲</h2>
-                        <Button style={{ margin: 'auto' }}>Add movie</Button>
-                    </Card>
+                    <div style={{marginTop:'10vw'}}><Card
+                    style={{
+                        width: '20rem',
+                        textAlign: 'center',
+                        backgroundColor: '#FF6FC0',
+                        padding: 15,
+                        margin: 'auto',
+                    }}
+                >
+                    <h2>Movie not found 🥲</h2>
+                    <Button style={{ margin: 'auto' }}>Add movie</Button>
+                </Card></div>
                 ) : (
-                    filteredMovies.map((movieCard, index) => (
-                        <MovieCard key={index} {...movieCard} />
-                    ))
+                    <div style={{backgroundColor:'#A7CDC9', width:'max-content', paddingTop:8}}>
+                    <h1 style={{marginTop:'8vh'}}>Popular Movies</h1>
+                    <div style={{ display: 'flex', marginTop: 15 }}>
+                    {filteredMovies.map((movieCard) => (
+                        <MovieCard key={movieCard.id} {...movieCard} />
+                    ))}
+                    </div>
+                    </div>
                 )}
             </div>
-        </div>
+        
     )
 }
 

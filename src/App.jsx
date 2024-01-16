@@ -12,7 +12,7 @@ function App() {
         <div>
             <Routes>
                 <Route path="/" element={<Filter />} />
-                <Route path="/trailerPage/:title" element={<TrailerPage />} />
+                <Route path="/trailer/:movieId" element={<TrailerPage />} />
                 <Route path="/newMovie" element={<NewMovie />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
