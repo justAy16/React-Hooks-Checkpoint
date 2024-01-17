@@ -2,7 +2,6 @@
 import MovieCard from './MovieCard'
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Form, Button, Card} from 'react-bootstrap';
-import { searchItem } from '../Functions/SearchItem';
 
 function Filter() {
     const API = 'https://api.themoviedb.org/3/movie/popular?api_key=be5b5b951aea3a7b6afe09c7d7c947b0';
