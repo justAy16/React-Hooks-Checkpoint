@@ -70,7 +70,7 @@ function Filter() {
                     <Button style={{ margin: 'auto' }}>Add movie</Button>
                 </Card></div>
                 ) : (
-                    <div style={{backgroundColor:'#A7CDC9', width:'max-content', paddingTop:8}}>
+                    <div style={{backgroundColor:'#A7CDC9', width:'max-content',minWidth:'100%', paddingTop:8}}>
                     <h1 style={{marginTop:'8vh'}}>Popular Movies</h1>
                     <div style={{ display: 'flex', marginTop: 15 }}>
                     {filteredMovies.map((movieCard) => (
