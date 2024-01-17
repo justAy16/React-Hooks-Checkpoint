@@ -49,14 +49,14 @@ function TrailerPage() {
   
 
     return (
-        <Card style={{backgroundColor:'#0F3230', color:'wheat', width:'80%', margin:'auto'}} className="text-center">
+        <Card style={{backgroundColor:'#0F3230', color:'wheat', width:'80%', margin:'auto', textAlign:'center'}} className="text-center">
             <Card.Header>Trailer</Card.Header>
             <Card.Body>
                 <Card.Title>{trailer.original_title}</Card.Title>
                 <div>{trailer.description}</div>
                 <iframe
                     style={{ margin: 'auto', marginTop: 15 }}
-                    width="560"
+                    width="100%"
                     height="315"
                     src={`https://www.youtube.com/embed/${trailerKey}`}
                     title="YouTube video player"
