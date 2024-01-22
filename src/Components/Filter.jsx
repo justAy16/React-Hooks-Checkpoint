@@ -3,8 +3,13 @@ import MovieCard from './MovieCard'
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Form, Button, Card} from 'react-bootstrap';
 
+
+
+
 function Filter() {
-    const API = 'https://api.themoviedb.org/3/movie/popular?api_key=be5b5b951aea3a7b6afe09c7d7c947b0';
+   
+    const APIKey = import.meta.env.VITE_IMDBKey
+    const API = `https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}`;
     const [movies, setMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState(movies)
 
@@ -71,7 +76,7 @@ function Filter() {
                 </Card></div>
                 ) : (
                     <div style={{backgroundColor:'#A7CDC9', width:'max-content',minWidth:'100%', paddingTop:8}}>
-                    <h1 style={{marginTop:'8vh'}}>Popular Movies</h1>
+                    <h1 style={{marginTop:'7vh', position:'sticky', left:'0', width:'50vw'}}>Popular Movies</h1>
                     <div style={{ display: 'flex', marginTop: 15 }}>
                     {filteredMovies.map((movieCard) => (
                         <MovieCard key={movieCard.id} {...movieCard} />

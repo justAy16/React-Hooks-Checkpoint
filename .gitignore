@@ -22,22 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.env
+/node_modules
 
- const API = 'https://api.themoviedb.org/3/movie/popular?api_key=be5b5b951aea3a7b6afe09c7d7c947b0';
-    const [movies, setMovies] = useState([]);
 
-     useEffect(() => {
-        fetch(API)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data.results)
-                setMovies(data.results)
-            })
-            .catch(error => {
-                console.error('Error fetching movie data:', error);
-            });
-    }, [API])
-
-    
 
 
